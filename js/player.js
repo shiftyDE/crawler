@@ -13,9 +13,12 @@ function gameLoop() {
 
     // Spielerposition auf Canvas-Grenzen begrenzen
     var pixelSize = 2;
-    var playerSize = 14 * pixelSize; // Spielergröße basierend auf den gezeichneten Pixel
-    playerX = Math.max(0, Math.min(playerX, canvas.width - playerSize));
-    playerY = Math.max(0, Math.min(playerY, canvas.height - playerSize));
+    // Spieler hat eine effektive Größe von ca. 27×34 Pixeln (basierend auf der Zeichnung)
+    // Links: px + 1*pixelSize, Rechts: px + 27*pixelSize, Oben: py + 3*pixelSize, Unten: py + 34*pixelSize
+    var playerSizeX = 27 * pixelSize; // 27*2 = 54 Pixel horizontal
+    var playerSizeY = 34 * pixelSize; // 34*2 = 68 Pixel vertikal
+    playerX = Math.max(0, Math.min(playerX, canvas.width - playerSizeX));
+    playerY = Math.max(0, Math.min(playerY, canvas.height - playerSizeY));
 
     // Gras zeichnen
     drawGrass();
