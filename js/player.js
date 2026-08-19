@@ -1,3 +1,50 @@
+// Spieler-Position
+var playerX = 0;
+var playerY = 0;
+
+// Steuerung
+function updatePlayerMovement() {
+    var speed = 2;
+    if (keys['w'] || keys['W']) { playerY -= speed; }
+    if (keys['s'] || keys['S']) { playerY += speed; }
+    if (keys['a'] || keys['A']) { playerX -= speed; }
+    if (keys['d'] || keys['D']) { playerX += speed; }
+}
+
+// Canvas initialisieren
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+// Spiel-Loop starten
+function gameLoop() {
+    // Steuerung aktualisieren
+    updatePlayerMovement();
+
+    // Gras zeichnen
+    function drawGrass() {
+        const tileSize = 20;
+        for (let x = 0; x < canvas.width; x += tileSize) {
+            for (let y = 0; y < canvas.height; y += tileSize) {
+                if ((x / tileSize + y / tileSize) % 2 === 0) {
+                    ctx.fillStyle = '#2d5016';
+                } else {
+                    ctx.fillStyle = '#3a7a26';
+                }
+                ctx.fillRect(x, y, tileSize, tileSize);
+            }
+        }
+    }
+    drawGrass();
+
+    // Spieler zeichnen
+    drawPlayer(playerX, playerY);
+
+    // Loop
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+
 // Spieler-Design zeichnen (relativ zum gegebenen Punkt)
 function drawPlayer(px, py) {
     const pixelSize = 2;
