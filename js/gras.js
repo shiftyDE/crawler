@@ -1,6 +1,3 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-
 // Gras-Muster zeichnen
 function drawGrass() {
     const tileSize = 20;
