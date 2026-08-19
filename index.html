@@ -18,9 +18,8 @@
     <script>
         // Haupt-Rendering
         function render() {
+            updatePlayerMovement()
             drawGrass();
-            const playerX = canvas.width / 2 - 8;
-            const playerY = canvas.height / 2 - 8;
             drawPlayer(playerX, playerY);
         }
 

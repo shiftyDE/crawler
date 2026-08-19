@@ -2,15 +2,6 @@
 var playerX = 0;
 var playerY = 0;
 
-// Steuerung
-function updatePlayerMovement() {
-    var speed = 2;
-    if (keys['w'] || keys['W']) { playerY -= speed; }
-    if (keys['s'] || keys['S']) { playerY += speed; }
-    if (keys['a'] || keys['A']) { playerX -= speed; }
-    if (keys['d'] || keys['D']) { playerX += speed; }
-}
-
 // Canvas initialisieren
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
