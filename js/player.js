@@ -20,6 +20,12 @@ function gameLoop() {
     // Steuerung aktualisieren
     updatePlayerMovement();
 
+    // Spielerposition auf Canvas-Grenzen begrenzen
+    var pixelSize = 2;
+    var playerSize = 14 * pixelSize; // Spielergröße basierend auf den gezeichneten Pixel
+    playerX = Math.max(0, Math.min(playerX, canvas.width - playerSize));
+    playerY = Math.max(0, Math.min(playerY, canvas.height - playerSize));
+
     // Gras zeichnen
     function drawGrass() {
         const tileSize = 20;
