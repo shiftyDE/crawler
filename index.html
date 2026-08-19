@@ -9,7 +9,80 @@
 </head>
 <body>
     <div class="game-container">
-        <canvas id="gameCanvas"></canvas>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
     </div>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Gras-Muster zeichnen
+        function drawGrass() {
+            const tileSize = 20;
+            for (let x = 0; x < canvas.width; x += tileSize) {
+                for (let y = 0; y < canvas.height; y += tileSize) {
+                    if ((x / tileSize + y / tileSize) % 2 === 0) {
+                        ctx.fillStyle = '#2d5016';
+                    } else {
+                        ctx.fillStyle = '#3a7a26';
+                    }
+                    ctx.fillRect(x, y, tileSize, tileSize);
+                }
+            }
+        }
+
+        // Spieler-Design zeichnen
+        function drawPlayer() {
+            const pixelSize = 2;
+
+            // Körper
+            ctx.fillStyle = '#3a7bd5';
+            ctx.fillRect(8 * pixelSize, 8 * pixelSize, 16 * pixelSize, 16 * pixelSize);
+            ctx.strokeStyle = '#2a5f9e';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(8 * pixelSize, 8 * pixelSize, 16 * pixelSize, 16 * pixelSize);
+
+            // Kopf
+            ctx.fillStyle = '#f5a623';
+            ctx.fillRect(10 * pixelSize, 5 * pixelSize, 8 * pixelSize, 8 * pixelSize);
+            ctx.strokeStyle = '#d4880f';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(10 * pixelSize, 5 * pixelSize, 8 * pixelSize, 8 * pixelSize);
+
+            // Augen
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(11 * pixelSize, 6 * pixelSize, 2 * pixelSize, 2 * pixelSize);
+            ctx.fillRect(15 * pixelSize, 6 * pixelSize, 2 * pixelSize, 2 * pixelSize);
+
+            // Mund
+            ctx.fillStyle = '#8b0000';
+            ctx.fillRect(12 * pixelSize, 12 * pixelSize, 2 * pixelSize, 1 * pixelSize);
+
+            // Arme
+            ctx.fillStyle = '#3a7bd5';
+            ctx.fillRect(5 * pixelSize, 10 * pixelSize, 3 * pixelSize, 2 * pixelSize);
+            ctx.fillRect(21 * pixelSize, 10 * pixelSize, 3 * pixelSize, 2 * pixelSize);
+            ctx.strokeStyle = '#2a5f9e';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(5 * pixelSize, 10 * pixelSize, 3 * pixelSize, 2 * pixelSize);
+            ctx.strokeRect(21 * pixelSize, 10 * pixelSize, 3 * pixelSize, 2 * pixelSize);
+
+            // Beine
+            ctx.fillStyle = '#3a7bd5';
+            ctx.fillRect(9 * pixelSize, 20 * pixelSize, 3 * pixelSize, 4 * pixelSize);
+            ctx.fillRect(19 * pixelSize, 20 * pixelSize, 3 * pixelSize, 4 * pixelSize);
+            ctx.strokeStyle = '#2a5f9e';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(9 * pixelSize, 20 * pixelSize, 3 * pixelSize, 4 * pixelSize);
+            ctx.strokeRect(19 * pixelSize, 20 * pixelSize, 3 * pixelSize, 4 * pixelSize);
+        }
+
+        // Haupt-Rendering
+        function render() {
+            drawGrass();
+            drawPlayer();
+        }
+
+        render();
+    </script>
 </body>
 </html>
